@@ -18,18 +18,26 @@
 
 .navbar ul {
   display: inline-block;
+  margin-bottom: 0px;
   list-style: none;
   float: right;
 }
 
-.navbar ul li {
+.navbar ul li a {
   display: inline-block;
-  margin-left: 20px;
-  margin-right: 60px;
-  color: #FFF;
-  font-size: 2.3rem;
+  font-size: 2.6rem;
 }
 
 .main {
   padding-top: 200px;
+}
+
+@media (max-width: 400px) {
+  .navbar a, .navbar ul li a {
+    font-size: 0.9rem;
+  }
+
+  .navbar {
+    height: 20px;
+  }
 }
