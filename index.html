@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Performa Support Website">
-    <meta name="authos" content="Koen Molenaar 2016">
+    <meta name="author" content="Koen Molenaar 2016">
 
     <!-- Mobiel specifieke meta-tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,14 +23,14 @@
 
     <!-- SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+  </head>
     <header>
       <div class="container">
         <div class="row">
           <div class="12 columns">
             <nav>
               <ul>
-                <li><a href="#">Profiel</a></li>
+                <li><a href="#profiel">Profiel</a></li>
                 <li><a href="#">Werk</a></li>
                 <li><a href="#" id="ctc-link">Contact</a></li>
               </ul>
@@ -43,7 +43,7 @@
             <h1>- Koen Molenaar  -</h1>
             <h4>Websites voor ZZP'ers mooi en simpel. Ik doe het. Niet voor een duur uurtarief, maar voor een vast bedrag.</h4>
 
-            <a href="#" class="btn">Kijk verder.</a>
+            <a href="#profiel" class="btn">Kijk verder.</a>
           </div>
         </div>
       </div>
@@ -51,14 +51,19 @@
 
     <div class="main">
       <div class="container">
-        <h2>Mijn werk.</h2>
-        <hr>
+        <div id="profiel">
+          <h2><a href="#">Mijn profiel.</a></h2>
+          <hr>
+          <img src="img/profiel_foto.jpg" alt="Koen Molenaar" title="Koen Molenaar" />
+          <p>
+            Ik ben Koen Molenaar en ik ben 15 jaar. Ik maak simpele 1-pagina websites voor zzp'ers, geen duur uurtarief, maar voor een vast bedrag. Ik zit nu op <a href="http://www.hetbaarnschlyceum.nl" target="_blank">Het Baarnsch Lyceum</a> in het derde jaar gymnasium. In mijn vrije tijd maak ik websites en nu heb ik besloten om dat voor geld te gaan doen. Niet teveel natuurlijk, ongeveer 50 euro per website, terwijl elke website rond de 10 uur werk is voor mij. Waarschijnlijk duurt het een tijdje voor uw website af is, maar dan heeft u ook wat!
+          </p>
+        </div>
       </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script  src="js/js.js" type="text/javascript">
+    <script  src="js/js.js" type="text/javascript"></script>
 
-    </script>
   </body>
 </html>
