@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Koen Molenaar / Home</title>
+    <link>https://www.koenmolenaar.nl/</link>
+    <description>Recent content on Koen Molenaar / Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>nl-nl</language>
+    <copyright>© Koen Molenaar 2021</copyright><atom:link href="https://www.koenmolenaar.nl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contact</title>
+      <link>https://www.koenmolenaar.nl/homepage/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.koenmolenaar.nl/homepage/contact/</guid>
+      <description>Voel je vrij om bij een berichtje te sturen via deze platforms:
+ Github Email  </description>
+    </item>
+    
+    <item>
+      <title>Over</title>
+      <link>https://www.koenmolenaar.nl/homepage/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.koenmolenaar.nl/homepage/about/</guid>
+      <description>Hoi hoi! ik ben Koen Molenaar, tweedejaars student Business &amp;amp; IT aan de University of Twente!</description>
+    </item>
+    
+  </channel>
+</rss>

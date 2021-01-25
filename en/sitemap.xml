@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/en/homepage/about/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/homepage/about/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/en/homepage/about/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/en/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/en/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/en/homepage/contact/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/homepage/contact/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/en/homepage/contact/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/en/homepage/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/homepage/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/en/homepage/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/en/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/en/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/en/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/en/tags/"
+                />
+  </url>
+  
+</urlset>
