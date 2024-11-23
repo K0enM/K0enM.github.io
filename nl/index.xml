@@ -6,7 +6,18 @@
     <description>Recent content on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <copyright>© Koen Molenaar 2024</copyright><atom:link href="https://www.koenmolenaar.nl/nl/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© Koen Molenaar 2024</copyright>
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.koenmolenaar.nl/nl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>jeFF0Falltrades Sandbox Crackme</title>
+      <link>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</guid>
+      <description>Introduction A few days ago, I noticed that one of my favorite reverse engineer youtubers, jeFF0Falltrades had uploaded a 2-part series on setting up a DIY Malware Analysis Sandbox.
+I already had a Malware Analysis lab setup (FLARE VM), but I had not used in quite a while. Moreover, one of the most important parts, faking &amp;amp; capturing internet traffic using Fakenet-ng was not really working for me. Therefore, I decided to revamp my lab using his video series.</description>
+    </item>
+    
     <item>
       <title>Contact</title>
       <link>https://www.koenmolenaar.nl/nl/homepage/contact/</link>

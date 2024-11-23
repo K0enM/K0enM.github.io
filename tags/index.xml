@@ -6,6 +6,25 @@
     <description>Recent content in Tags on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <copyright>© Koen Molenaar 2024</copyright><atom:link href="https://www.koenmolenaar.nl/tags/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© Koen Molenaar 2024</copyright>
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.koenmolenaar.nl/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>crackme</title>
+      <link>https://www.koenmolenaar.nl/tags/crackme/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.koenmolenaar.nl/tags/crackme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>write-up</title>
+      <link>https://www.koenmolenaar.nl/tags/write-up/</link>
+      <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.koenmolenaar.nl/tags/write-up/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

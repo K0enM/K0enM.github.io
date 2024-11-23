@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Write-ups on Koen Molenaar / Home</title>
-    <link>https://www.koenmolenaar.nl/write-ups/</link>
-    <description>Recent content in Write-ups on Koen Molenaar / Home</description>
+    <title>write-up on Koen Molenaar / Home</title>
+    <link>https://www.koenmolenaar.nl/nl/tags/write-up/</link>
+    <description>Recent content in write-up on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>© Koen Molenaar 2024</copyright>
-    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.koenmolenaar.nl/write-ups/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.koenmolenaar.nl/nl/tags/write-up/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>jeFF0Falltrades Sandbox Crackme</title>
-      <link>https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/</link>
+      <link>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</link>
       <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/</guid>
+      <guid>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</guid>
       <description>Introduction A few days ago, I noticed that one of my favorite reverse engineer youtubers, jeFF0Falltrades had uploaded a 2-part series on setting up a DIY Malware Analysis Sandbox.
 I already had a Malware Analysis lab setup (FLARE VM), but I had not used in quite a while. Moreover, one of the most important parts, faking &amp;amp; capturing internet traffic using Fakenet-ng was not really working for me. Therefore, I decided to revamp my lab using his video series.</description>
     </item>

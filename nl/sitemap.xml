@@ -3,6 +3,96 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.koenmolenaar.nl/nl/tags/crackme/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/tags/crackme/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/nl/tags/crackme/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/nl/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/nl/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/nl/tags/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/nl/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/nl/tags/write-up/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/tags/write-up/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/nl/tags/write-up/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://www.koenmolenaar.nl/nl/write-ups/</loc>
+    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.koenmolenaar.nl/write-ups/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="https://www.koenmolenaar.nl/nl/write-ups/"
+                />
+  </url>
+  
+  <url>
     <loc>https://www.koenmolenaar.nl/nl/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -45,20 +135,6 @@
   </url>
   
   <url>
-    <loc>https://www.koenmolenaar.nl/nl/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.koenmolenaar.nl/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/"
-                />
-  </url>
-  
-  <url>
     <loc>https://www.koenmolenaar.nl/nl/homepage/about/</loc>
     <xhtml:link
                 rel="alternate"
@@ -69,20 +145,6 @@
                 rel="alternate"
                 hreflang="nl"
                 href="https://www.koenmolenaar.nl/nl/homepage/about/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://www.koenmolenaar.nl/nl/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.koenmolenaar.nl/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/tags/"
                 />
   </url>
   
