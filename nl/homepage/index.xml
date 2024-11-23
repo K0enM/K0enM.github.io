@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homepages on Koen Molenaar / Home</title>
+    <link>https://www.koenmolenaar.nl/nl/homepage/</link>
+    <description>Recent content in Homepages on Koen Molenaar / Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <copyright>© Koen Molenaar 2024</copyright><atom:link href="https://www.koenmolenaar.nl/nl/homepage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contact</title>
+      <link>https://www.koenmolenaar.nl/nl/homepage/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.koenmolenaar.nl/nl/homepage/contact/</guid>
+      <description>Vind mij op deze platforms:
+ Github X / Twitter  LinkedIn  </description>
+    </item>
+    
+    <item>
+      <title>Over</title>
+      <link>https://www.koenmolenaar.nl/nl/homepage/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.koenmolenaar.nl/nl/homepage/about/</guid>
+      <description>Hoi hoi! ik ben Koen Molenaar. Ik studeer Cybersecurity aan de University of Twente en op deze website post ik write-ups &amp;amp; blogs over cybersecurity!</description>
+    </item>
+    
+  </channel>
+</rss>

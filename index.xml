@@ -5,25 +5,26 @@
     <link>https://www.koenmolenaar.nl/</link>
     <description>Recent content on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>nl-nl</language>
-    <copyright>© Koen Molenaar 2022</copyright><atom:link href="https://www.koenmolenaar.nl/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-US</language>
+    <copyright>© Koen Molenaar 2024</copyright>
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.koenmolenaar.nl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://www.koenmolenaar.nl/homepage/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.koenmolenaar.nl/homepage/about/</guid>
+      <description>Hi there! I&amp;rsquo;m Koen Molenaar. I&amp;rsquo;m a Cybersecurity Msc student at the University of Twente and on this website I post write-ups &amp;amp; blogs about cybersecurity.</description>
+    </item>
+    
     <item>
       <title>Contact</title>
       <link>https://www.koenmolenaar.nl/homepage/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.koenmolenaar.nl/homepage/contact/</guid>
-      <description>Voel je vrij om bij een berichtje te sturen via deze platforms:
- Github Email  </description>
-    </item>
-    
-    <item>
-      <title>Over</title>
-      <link>https://www.koenmolenaar.nl/homepage/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.koenmolenaar.nl/homepage/about/</guid>
-      <description>Hoi hoi! ik ben Koen Molenaar, tweedejaars student Business &amp;amp; IT aan de University of Twente!</description>
+      <description>Find me on these platforms:
+ Github X / Twitter  LinkedIn  </description>
     </item>
     
   </channel>
