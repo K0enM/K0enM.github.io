@@ -5,7 +5,7 @@
     <link>https://www.koenmolenaar.nl/homepage/</link>
     <description>Recent content in Homepages on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
+    <language>en</language>
     <copyright>© Koen Molenaar 2024</copyright><atom:link href="https://www.koenmolenaar.nl/homepage/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
@@ -13,7 +13,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.koenmolenaar.nl/homepage/about/</guid>
-      <description>Hi there! I&amp;rsquo;m Koen Molenaar. I&amp;rsquo;m a Cybersecurity Msc student at the University of Twente and on this website I post write-ups &amp;amp; blogs about cybersecurity.</description>
+      <description>&lt;p&gt;&lt;strong&gt;Hi there!&lt;/strong&gt; I&amp;rsquo;m Koen Molenaar. I&amp;rsquo;m a Cybersecurity Msc student at the University of Twente and on this website I post write-ups &amp;amp; blogs about cybersecurity.&lt;/p&gt;</description>
+      <content>&lt;p&gt;&lt;strong&gt;Hi there!&lt;/strong&gt; I&amp;rsquo;m Koen Molenaar. I&amp;rsquo;m a Cybersecurity Msc student at the University of Twente and on this website I post write-ups &amp;amp; blogs about cybersecurity.&lt;/p&gt;
+</content>
     </item>
     
     <item>
@@ -22,8 +24,19 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.koenmolenaar.nl/homepage/contact/</guid>
-      <description>Find me on these platforms:
- Github X / Twitter  LinkedIn  </description>
+      <description>&lt;p&gt;Find me on these platforms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/K0enM&#34;&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://x.com/K0en_M&#34;&gt; X / Twitter &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/koen-molenaar-780405227/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <content>&lt;p&gt;Find me on these platforms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/K0enM&#34;&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://x.com/K0en_M&#34;&gt; X / Twitter &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/koen-molenaar-780405227/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
     </item>
     
   </channel>

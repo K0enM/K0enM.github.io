@@ -5,7 +5,7 @@
     <link>https://www.koenmolenaar.nl/nl/homepage/</link>
     <description>Recent content in Homepages on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
+    <language>nl</language>
     <copyright>© Koen Molenaar 2024</copyright><atom:link href="https://www.koenmolenaar.nl/nl/homepage/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Contact</title>
@@ -13,8 +13,19 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.koenmolenaar.nl/nl/homepage/contact/</guid>
-      <description>Vind mij op deze platforms:
- Github X / Twitter  LinkedIn  </description>
+      <description>&lt;p&gt;Vind mij op deze platforms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/K0enM&#34;&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://x.com/K0en_M&#34;&gt; X / Twitter &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/koen-molenaar-780405227/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+      <content>&lt;p&gt;Vind mij op deze platforms:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/K0enM&#34;&gt;Github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://x.com/K0en_M&#34;&gt; X / Twitter &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/koen-molenaar-780405227/&#34;&gt;LinkedIn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
     </item>
     
     <item>
@@ -23,7 +34,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.koenmolenaar.nl/nl/homepage/about/</guid>
-      <description>Hoi hoi! ik ben Koen Molenaar. Ik studeer Cybersecurity aan de University of Twente en op deze website post ik write-ups &amp;amp; blogs over cybersecurity!</description>
+      <description>&lt;p&gt;&lt;strong&gt;Hoi hoi!&lt;/strong&gt; ik ben Koen Molenaar. Ik studeer Cybersecurity aan de University of Twente en op deze website post ik write-ups &amp;amp; blogs over cybersecurity!&lt;/p&gt;</description>
+      <content>&lt;p&gt;&lt;strong&gt;Hoi hoi!&lt;/strong&gt; ik ben Koen Molenaar. Ik studeer Cybersecurity aan de University of Twente en op deze website post ik write-ups &amp;amp; blogs over cybersecurity!&lt;/p&gt;
+</content>
     </item>
     
   </channel>

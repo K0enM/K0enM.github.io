@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>write-up on Koen Molenaar / Home</title>
+    <title>Write-Up on Koen Molenaar / Home</title>
     <link>https://www.koenmolenaar.nl/nl/tags/write-up/</link>
-    <description>Recent content in write-up on Koen Molenaar / Home</description>
+    <description>Recent content in Write-Up on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-US</language>
+    <language>nl</language>
     <copyright>© Koen Molenaar 2024</copyright>
     <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.koenmolenaar.nl/nl/tags/write-up/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,8 +14,172 @@
       <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
       
       <guid>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</guid>
-      <description>Introduction A few days ago, I noticed that one of my favorite reverse engineer youtubers, jeFF0Falltrades had uploaded a 2-part series on setting up a DIY Malware Analysis Sandbox.
-I already had a Malware Analysis lab setup (FLARE VM), but I had not used in quite a while. Moreover, one of the most important parts, faking &amp;amp; capturing internet traffic using Fakenet-ng was not really working for me. Therefore, I decided to revamp my lab using his video series.</description>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;A few days ago, I noticed that one of my favorite reverse engineer youtubers, &lt;a href=&#34;https://www.youtube.com/@jeFF0Falltrades&#34;&gt;jeFF0Falltrades&lt;/a&gt; had uploaded a &lt;a href=&#34;https://www.youtube.com/watch?v=ELPWeRXxnSE&amp;amp;list=PLs-lxQfNn-H3n9TghY02njSFYdBvf_Sea&amp;amp;index=4&#34;&gt;2-part series on setting up a DIY Malware Analysis Sandbox.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I already had a Malware Analysis lab setup (&lt;a href=&#34;https://github.com/mandiant/flare-vm&#34;&gt;FLARE VM&lt;/a&gt;), but I had not used in quite a while. Moreover, one of the most important parts, faking &amp;amp; capturing internet traffic using Fakenet-ng was not really working for me. Therefore, I decided to revamp my lab using his video series. I did deviate a bit (I updated my existing FLARE VM &amp;amp; I used &lt;a href=&#34;https://www.netresec.com/?page=PolarProxy&#34;&gt;PolarProxy&lt;/a&gt; instead of &lt;a href=&#34;https://portswigger.net/burp&#34;&gt;BurpSuite&lt;/a&gt; as my TLS termination proxy), but in the end I had an up-to-date lab again.&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;A few days ago, I noticed that one of my favorite reverse engineer youtubers, &lt;a href=&#34;https://www.youtube.com/@jeFF0Falltrades&#34;&gt;jeFF0Falltrades&lt;/a&gt; had uploaded a &lt;a href=&#34;https://www.youtube.com/watch?v=ELPWeRXxnSE&amp;amp;list=PLs-lxQfNn-H3n9TghY02njSFYdBvf_Sea&amp;amp;index=4&#34;&gt;2-part series on setting up a DIY Malware Analysis Sandbox.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I already had a Malware Analysis lab setup (&lt;a href=&#34;https://github.com/mandiant/flare-vm&#34;&gt;FLARE VM&lt;/a&gt;), but I had not used in quite a while. Moreover, one of the most important parts, faking &amp;amp; capturing internet traffic using Fakenet-ng was not really working for me. Therefore, I decided to revamp my lab using his video series. I did deviate a bit (I updated my existing FLARE VM &amp;amp; I used &lt;a href=&#34;https://www.netresec.com/?page=PolarProxy&#34;&gt;PolarProxy&lt;/a&gt; instead of &lt;a href=&#34;https://portswigger.net/burp&#34;&gt;BurpSuite&lt;/a&gt; as my TLS termination proxy), but in the end I had an up-to-date lab again.&lt;/p&gt;
+&lt;p&gt;Of course, I needed to test my workflow using this new lab. So, I decided to take on jeFF0Falltrades&amp;rsquo;s Crackme, which he posted on his &lt;a href=&#34;https://github.com/jeFF0Falltrades/Tutorials/tree/master/master0Fnone_classes/2_Sandbox_in_a_Box/&#34;&gt;DIY Malware Analysis Lab Github&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;initial-analysis&#34;&gt;Initial Analysis&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Filename: crackme.exe&lt;/li&gt;
+&lt;li&gt;Size: 5103616 bytes&lt;/li&gt;
+&lt;li&gt;SHA256: BB203AB338BE9968BA5ECBDF1B53633EB15D9BE82B7BC32D4E4ADE86B3467788&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;CAPA output:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┍━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┑
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ md5         │ 12712bfc9bc3196414cd8a38853e1131                                                                             │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ sha1        │ 0447c87644a8f3a3df05849f8d9544d629ec1a72                                                                     │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ sha256      │ bb203ab338be9968ba5ecbdf1b53633eb15d9be82b7bc32d4e4ade86b3467788                                             │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ analysis    │ static                                                                                                       │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ os          │ windows                                                                                                      │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ format      │ pe                                                                                                           │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ arch        │ amd64                                                                                                        │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ path        │ C:/Users/test/Desktop/crackme/crackme.exe                                                                    │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┕━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┍━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┑
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ ATT&amp;amp;CK Tactic                        │ ATT&amp;amp;CK Technique                                                                 │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┝━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┥
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ DEFENSE EVASION                      │ Deobfuscate/Decode Files or Information T1140                                    │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Obfuscated Files or Information T1027                                            │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Virtualization/Sandbox Evasion::System Checks T1497.001                          │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ EXECUTION                            │ Shared Modules T1129                                                             │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┕━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┍━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┑
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ MBC Objective                        │ MBC Behavior                                                                      │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┝━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┥
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ ANTI-BEHAVIORAL ANALYSIS             │ Debugger Detection::Software Breakpoints [B0001.025]                             │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Virtual Machine Detection [B0009]                                                │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ COMMUNICATION                        │ HTTP Communication::Read Header [C0002.014]                                      │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ CRYPTOGRAPHY                         │ Crypto Library [C0059]                                                           │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Cryptographic Hash::SHA256 [C0029.003]                                           │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Decrypt Data::AES [C0031.001]                                                    │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Encrypt Data::3DES [C0027.004]                                                   │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Encrypt Data::AES [C0027.001]                                                    │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Encrypt Data::RC4 [C0027.009]                                                    │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Generate Pseudo-random Sequence::RC4 PRGA [C0021.004]                            │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Hashed Message Authentication Code [C0061]                                       │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ DATA                                 │ Check String [C0019]                                                             │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Encode Data::Base64 [C0026.001]                                                  │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Encode Data::XOR [C0026.002]                                                     │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Non-Cryptographic Hash::FNV [C0030.005]                                          │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Non-Cryptographic Hash::MurmurHash [C0030.001]                                   │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ DEFENSE EVASION                      │ Obfuscated Files or Information::Encoding-Custom Algorithm [E1027.m03]          │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Obfuscated Files or Information::Encoding-Standard Algorithm [E1027.m02]        │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│                                      │ Obfuscated Files or Information::Encryption-Standard Algorithm [E1027.m05]      │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ DISCOVERY                            │ Code Discovery::Enumerate PE Sections [B0046.001]                                │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─────────────────────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────┤
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ PROCESS                              │ Allocate Thread Local Storage [C0040]                                            │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┕━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┍━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┯━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┑
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ Capability                            │ Namespace                                                                        │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┝━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┿━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┥
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ check for software breakpoints        │ anti-analysis/anti-debugging/debugger-detection                                 │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ reference anti-VM strings             │ anti-analysis/anti-vm/vm-detection                                              │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ parse credit card information         │ collection/credit-card                                                          │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ check HTTP status code                │ communication/http/client                                                       │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ compiled with Go                      │ compiler/go                                                                     │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ encode data using ADD XOR SUB         │ data-manipulation/encoding                                                      │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ encode data using Base64              │ data-manipulation/encoding/base64                                               │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ reference Base64 string               │ data-manipulation/encoding/base64                                               │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ encode data using XOR                 │ data-manipulation/encoding/xor                                                  │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ decrypt data using AES                │ data-manipulation/encryption/aes                                                │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ encrypt data using AES                │ data-manipulation/encryption/aes                                                │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ encrypt data using DES                │ data-manipulation/encryption/des                                                │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ encrypt data using RC4                │ data-manipulation/encryption/rc4                                                │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ hash data using fnv                   │ data-manipulation/hashing/fnv                                                   │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ hash data using SHA256                │ data-manipulation/hashing/sha256                                                │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ hash data using SHA512                │ data-manipulation/hashing/sha512                                                │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ authenticate HMAC                     │ data-manipulation/hmac                                                          │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ allocate thread local storage         │ host-interaction/thread/tls                                                    │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ enumerate PE sections                 │ load-code/pe                                                                    │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ resolve function by parsing PE exports│ load-code/pe                                                                    │
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┕━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;DIE output:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/die-output.png&#34; alt=&#34;detect it easy output&#34; title=&#34;Detect it Easy output&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Seeing this, we know this is a 64-bit Go executable, probably compiled using version 1.22.4.&lt;/p&gt;
+&lt;p&gt;Normally, I would also use &lt;a href=&#34;https://www.winitor.com/&#34;&gt;PE-studio&lt;/a&gt; to analyze a PE file. However, when analyzing the crackme.exe inside PE-studio, it became extremely slow and made my VM unusable. Therefore, I used &lt;a href=&#34;https://ntcore.com/explorer-suite/&#34;&gt;CFF explorer&lt;/a&gt; to analyze the import table of the crackme. Doing this, I found several interesting WinAPI function calls:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Interesting imported functions&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;WriteFile&lt;/li&gt;
+&lt;li&gt;VirtualAlloc&lt;/li&gt;
+&lt;li&gt;SwitchToThread&lt;/li&gt;
+&lt;li&gt;LoadLibraryW&lt;/li&gt;
+&lt;li&gt;GetProcAddress&lt;/li&gt;
+&lt;li&gt;CreateThread&lt;/li&gt;
+&lt;li&gt;CreateFileA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Strings analysis:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Analyzing the strings contained in the binary, I could see a large amount of strings related to Go code, again confirming this binary was written in Go. Moreover, a lot of strings seemed to be related to cryptography &amp;amp; signatures (I saw &amp;ldquo;X.509&amp;rdquo; multiple times in the binary). From this, it can be assumed that the binary will try to connect to the internet over TLS.&lt;/p&gt;
+&lt;p&gt;After this simple static analyis, I decided not to reverse engineer the binary using Ghidra, but to find the answers to the following questions dynamically so I could practice my dynamic analysis skills.&lt;/p&gt;
+&lt;h1 id=&#34;questions&#34;&gt;Questions&lt;/h1&gt;
+&lt;p&gt;To not spoil the challenge, I will not show the actual answers to the questions in this write-up.&lt;/p&gt;
+&lt;h2 id=&#34;question-1&#34;&gt;Question 1&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What string, starting with the prefix &amp;ldquo;flag_&amp;rdquo;, is found when running crackme.exe?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I solved this question using &lt;a href=&#34;https://systeminformer.sourceforge.io/&#34;&gt;SystemInformer&lt;/a&gt;. In SystemInformer, you can look at the memory of a running (or suspended) process. In the memory tab, there is the options button which allows you to look at the strings in memory and filter them. Since we know the answers contains &amp;ldquo;flag_&amp;rdquo;, a simple filter for strings containing this shows the answer.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q1-answer.png&#34; alt=&#34;Screenshot of blurred answer to Question 1&#34; title=&#34;Screenshot of blurred answer to Question 1&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;question-2&#34;&gt;Question 2&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is the full path of the file that crackme.exe attempts to access?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I solved this using &lt;a href=&#34;https://learn.microsoft.com/en-us/sysinternals/downloads/procmon&#34;&gt;ProcMon&lt;/a&gt;. To weed out background noise, I filtered the events by only including events originating from crackme.exe. To easily find file operations, I also filtered on operations containing &amp;ldquo;File&amp;rdquo;. The answer to this question can then be found inside ProcMon.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q2-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 2&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;question-3&#34;&gt;Question 3&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;crackme.exe uses a suspicious library&amp;hellip;how big is this DLL in &lt;strong&gt;bytes?&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This was a slightly more difficult question. Initially, I was unsure as to how to answer this. After a while, I remembered jeFF0Falltrades installing &lt;a href=&#34;https://github.com/hasherezade/pe-sieve&#34;&gt;PE-sieve&lt;/a&gt;, which can be used to extract &lt;strong&gt;suspicious&lt;/strong&gt; DLLs &amp;amp; EXEs from a running process. Running PE-sieve on a running / suspended process of crackme outputs a suspicous DLL. I analyzed this DLL in PE-studio, which shows use the size.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q3-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 3&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;question-4&#34;&gt;Question 4&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Speaking of that suspicious library, what is the file name opened by this library called?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This answer I got fairly trivially. I looked at the strings inside the DLL in &lt;a href=&#34;https://www.winitor.com/&#34;&gt;PE-studio&lt;/a&gt;, which shows the answer immediately.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q4-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 4&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;question-5&#34;&gt;Question 5&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is the full URL crackme.exe attempts to contact?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;During static analysis, I found multiple references to TLS in the binary. I confirmed my suspicions by using Wireshark to capture network traffic while running the binary, which revealed that the binary generates HTTPS traffic. Therefore, to answer this question I needed to decrypt the TLS traffic. Luckily, a large part of the tutorial was focussed on setting up &lt;a href=&#34;https://www.inetsim.org/&#34;&gt;INetSim&lt;/a&gt; together with BurpSuite to do exactly this. However, I could not get BurpSuite to work and more importantly, I do not like using a cumbersome GUI tool for something which probably can be done inside the terminal. Therefore, I decided to use &lt;a href=&#34;https://www.netresec.com/?page=PolarProxy&#34;&gt;PolarProxy&lt;/a&gt; instead.&lt;/p&gt;
+&lt;p&gt;Like with BurpSuite, you need to install the Root Certificate in the Windows VM before you are able to decrypt TLS traffic coming from it. The command I used to run PolarProxy to decrypt my TLS traffic was:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo polarproxy --terminate --connect 10.10.10.3 -p 443,80,80 --leafcert sign -o . -v
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This intercepts TLS traffic coming from port 443, decrypts it, and forwards the decrypted traffic to 10.10.10.3:80 (My Remnux VM IP), where it is caught by INetSim&amp;rsquo;s HTTP Listener and logged. It also writes a PCAP to the local directory containing the decrypted traffic as if it was directed at port 80.&lt;/p&gt;
+&lt;p&gt;You can find the full URL by looking at the INetSim report or looking through the PCAP generated by PolarProxy.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q5-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 5&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;question-6&#34;&gt;Question 6&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is the data sent to this URL? (including spaces and punctuation)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;No extra steps are needed to answer this question. The answer can be found by looking at the file generated by INetSim which contains the HTTP Post payload, or by looking through the PCAP generated by PolarProxy.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q6-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 6&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;question-7&#34;&gt;Question 7&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is the name of the file crackme.exe writes to disk? (just the name, not the path; case sensitive)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For this question, I used ProcMon again with the same filters as for &lt;a href=&#34;https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/#question-2&#34;&gt;Question 2&lt;/a&gt;. However, since the question states &amp;ldquo;writes to disk&amp;rdquo; instead of just &amp;ldquo;accesses&amp;rdquo;, I specifically looked for WriteFile operations.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q7-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 7&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;question-8&#34;&gt;Question 8&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What are the contents of this file?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After running the malware, I saw that the file it writes to was not persisted on disk after the binary was finished executing. A look at File operations in ProcMon seemed to confirm this. Luckily, I had learned about the &lt;a href=&#34;https://github.com/fbruzzaniti/Capture-Py&#34;&gt;capture-py.py&lt;/a&gt; script, recommended by jeFF0Falltrades. Using this, I was able to obtain a copy of the file so I could answer this question.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q8-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 8&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Overall, this challenge was really nice. It was not too easy, but also doable with limited experience using dynamic analysis tools. Moreover, it was very clear that this challenge was designed to be solved with the tools recommended in the tutorial. This made solving this crackme a good shakedown for my lab, which I intend to use in the future for more practice in malware analysis &amp;amp; reverse engineering.&lt;/p&gt;
+&lt;p&gt;Lastly, a big thanks to &lt;a href=&#34;https://www.youtube.com/@jeFF0Falltrades&#34;&gt;je0FFalltrades&lt;/a&gt; for creating amazing RE content and setting up this challenge!&lt;/p&gt;
+</content>
     </item>
     
   </channel>
