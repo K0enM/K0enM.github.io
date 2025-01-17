@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   
     <title>jeFF0Falltrades Sandbox Crackme :: Koen Molenaar / Home</title>
   
@@ -9,23 +9,23 @@
 <meta name="description" content="A write-up of jeFF0Falltrades Crackme challenge, which was part of his DIY Malware Analysis Sandbox series." />
 <meta name="keywords" content="write-up, crackme, malware analysis" />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/" />
+<link rel="canonical" href="//localhost:1313/write-ups/other/jeff0falltrades-sandbox-crackme/jeff0falltrades-sandbox-crackme/" />
 
 
 
 
-<link rel="stylesheet" href="https://www.koenmolenaar.nl/assets/style.css">
+<link rel="stylesheet" href="//localhost:1313/assets/style.css">
 
-  <link rel="stylesheet" href="https://www.koenmolenaar.nl/assets/green.css">
-
-
+  <link rel="stylesheet" href="//localhost:1313/assets/green.css">
 
 
 
 
-<link rel="apple-touch-icon" href="https://www.koenmolenaar.nl/img/apple-touch-icon-192x192.png">
 
-  <link rel="shortcut icon" href="https://www.koenmolenaar.nl/img/favicon/green.png">
+
+<link rel="apple-touch-icon" href="//localhost:1313/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="//localhost:1313/img/favicon/green.png">
 
 
 
@@ -42,10 +42,10 @@
 <meta property="og:type" content="article" />
 <meta property="og:title" content="jeFF0Falltrades Sandbox Crackme">
 <meta property="og:description" content="A write-up of jeFF0Falltrades Crackme challenge, which was part of his DIY Malware Analysis Sandbox series." />
-<meta property="og:url" content="https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/" />
+<meta property="og:url" content="//localhost:1313/write-ups/other/jeff0falltrades-sandbox-crackme/jeff0falltrades-sandbox-crackme/" />
 <meta property="og:site_name" content="Koen Molenaar / Home" />
 
-  <meta property="og:image" content="https://www.koenmolenaar.nl/">
+  <meta property="og:image" content="//localhost:1313/">
 
 <meta property="og:image:width" content="2048">
 <meta property="og:image:height" content="1024">
@@ -116,7 +116,7 @@
       </ul>
       <ul class="language-selector__more hidden">
         
-        <li><a href="https://www.koenmolenaar.nl/">English</a></li>
+        <li><a href="//localhost:1313/">English</a></li>
         
       </ul>
     </ul>
@@ -141,7 +141,7 @@
     <hr />
       
         <li>
-          <a href="https://www.koenmolenaar.nl/">English</a>
+          <a href="//localhost:1313/">English</a>
         </li>
       
     
@@ -156,7 +156,7 @@
     
 <div class="post">
   <h1 class="post-title">
-    <a href="https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/">jeFF0Falltrades Sandbox Crackme</a></h1>
+    <a href="//localhost:1313/write-ups/other/jeff0falltrades-sandbox-crackme/jeff0falltrades-sandbox-crackme/">jeFF0Falltrades Sandbox Crackme</a></h1>
   <div class="post-meta">
     
       <span class="post-date">
@@ -173,9 +173,9 @@
   
   <span class="post-tags">
     
-    #<a href="https://www.koenmolenaar.nl/tags/write-up/">write-up</a>&nbsp;
+    #<a href="//localhost:1313/tags/write-up/">write-up</a>&nbsp;
     
-    #<a href="https://www.koenmolenaar.nl/tags/crackme/">crackme</a>&nbsp;
+    #<a href="//localhost:1313/tags/crackme/">crackme</a>&nbsp;
     
   </span>
   
@@ -301,10 +301,7 @@
 </span></span><span style="display:flex;"><span>│ resolve function by parsing PE exports│ load-code/pe                                                                    │
 </span></span><span style="display:flex;"><span>┕━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙
 </span></span></code></pre></div><p><strong>DIE output:</strong></p>
-
-  <img src="die-output.png"  alt="Detect it Easy output"  class="center"  />
-
-
+<p><img src="/write-ups/jeff0falltrades-sandbox-crackme/die-output.png" alt="detect it easy output" title="Detect it Easy output"></p>
 <p>Seeing this, we know this is a 64-bit Go executable, probably compiled using version 1.22.4.</p>
 <p>Normally, I would also use <a href="https://www.winitor.com/">PE-studio</a> to analyze a PE file. However, when analyzing the crackme.exe inside PE-studio, it became extremely slow and made my VM unusable. Therefore, I used <a href="https://ntcore.com/explorer-suite/">CFF explorer</a> to analyze the import table of the crackme. Doing this, I found several interesting WinAPI function calls:</p>
 <p><strong>Interesting imported functions</strong></p>
@@ -328,7 +325,7 @@
 </blockquote>
 <p>I solved this question using <a href="https://systeminformer.sourceforge.io/">SystemInformer</a>. In SystemInformer, you can look at the memory of a running (or suspended) process. In the memory tab, there is the options button which allows you to look at the strings in memory and filter them. Since we know the answers contains &ldquo;flag_&rdquo;, a simple filter for strings containing this shows the answer.</p>
 
-  <img src="q1-answer.png"  alt="Screenshot of blurred answer to Question 1"  class="center"  />
+  <img src="/write-ups/jeff0falltrades-sandbox-crackme/q1-answer.png"  alt="Screenshot of blurred answer to Question 1"  class="center"  />
 
 
 <h2 id="question-2">Question 2<a href="#question-2" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -337,7 +334,7 @@
 </blockquote>
 <p>I solved this using <a href="https://learn.microsoft.com/en-us/sysinternals/downloads/procmon">ProcMon</a>. To weed out background noise, I filtered the events by only including events originating from crackme.exe. To easily find file operations, I also filtered on operations containing &ldquo;File&rdquo;. The answer to this question can then be found inside ProcMon.</p>
 
-  <img src="q2-answer.png"  alt="Screenshot of blurred answer to Question 2"  class="center"  />
+  <img src="/write-ups/jeff0falltrades-sandbox-crackme/q2-answer.png"  alt="Screenshot of blurred answer to Question 2"  class="center"  />
 
 
 <h2 id="question-3">Question 3<a href="#question-3" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -346,7 +343,7 @@
 </blockquote>
 <p>This was a slightly more difficult question. Initially, I was unsure as to how to answer this. After a while, I remembered jeFF0Falltrades installing <a href="https://github.com/hasherezade/pe-sieve">PE-sieve</a>, which can be used to extract <strong>suspicious</strong> DLLs &amp; EXEs from a running process. Running PE-sieve on a running / suspended process of crackme outputs a suspicous DLL. I analyzed this DLL in PE-studio, which shows use the size.</p>
 
-  <img src="q3-answer.png"  alt="Screenshot of blurred answer to Question 3"  class="center"  />
+  <img src="/write-ups/jeff0falltrades-sandbox-crackme/q3-answer.png"  alt="Screenshot of blurred answer to Question 3"  class="center"  />
 
 
 <h2 id="question-4">Question 4<a href="#question-4" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -355,7 +352,7 @@
 </blockquote>
 <p>This answer I got fairly trivially. I looked at the strings inside the DLL in <a href="https://www.winitor.com/">PE-studio</a>, which shows the answer immediately.</p>
 
-  <img src="q4-answer.png"  alt="Screenshot of blurred answer to Question 4"  class="center"  />
+  <img src="/write-ups/jeff0falltrades-sandbox-crackme/q4-answer.png"  alt="Screenshot of blurred answer to Question 4"  class="center"  />
 
 
 <h2 id="question-5">Question 5<a href="#question-5" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -368,7 +365,7 @@
 </span></span></code></pre></div><p>This intercepts TLS traffic coming from port 443, decrypts it, and forwards the decrypted traffic to 10.10.10.3:80 (My Remnux VM IP), where it is caught by INetSim&rsquo;s HTTP Listener and logged. It also writes a PCAP to the local directory containing the decrypted traffic as if it was directed at port 80.</p>
 <p>You can find the full URL by looking at the INetSim report or looking through the PCAP generated by PolarProxy.</p>
 
-  <img src="q5-answer.png"  alt="Screenshot of blurred answer to Question 5"  class="center"  />
+  <img src="/write-ups/jeff0falltrades-sandbox-crackme/q5-answer.png"  alt="Screenshot of blurred answer to Question 5"  class="center"  />
 
 
 <h2 id="question-6">Question 6<a href="#question-6" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -377,16 +374,16 @@
 </blockquote>
 <p>No extra steps are needed to answer this question. The answer can be found by looking at the file generated by INetSim which contains the HTTP Post payload, or by looking through the PCAP generated by PolarProxy.</p>
 
-  <img src="q6-answer.png"  alt="Screenshot of blurred answer to Question 6"  class="center"  />
+  <img src="/write-ups/jeff0falltrades-sandbox-crackme/q6-answer.png"  alt="Screenshot of blurred answer to Question 6"  class="center"  />
 
 
 <h2 id="question-7">Question 7<a href="#question-7" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <blockquote>
 <p>What is the name of the file crackme.exe writes to disk? (just the name, not the path; case sensitive)</p>
 </blockquote>
-<p>For this question, I used ProcMon again with the same filters as for <a href="/write-ups/jeff0falltrades-sandbox-crackme/#question-2">Question 2</a>. However, since the question states &ldquo;writes to disk&rdquo; instead of just &ldquo;accesses&rdquo;, I specifically looked for WriteFile operations.</p>
+<p>For this question, I used ProcMon again with the same filters as for <a href="/write-ups/other/jeff0falltrades-sandbox-crackme/jeff0falltrades-sandbox-crackme/#question-2">Question 2</a>. However, since the question states &ldquo;writes to disk&rdquo; instead of just &ldquo;accesses&rdquo;, I specifically looked for WriteFile operations.</p>
 
-  <img src="q7-answer.png"  alt="Screenshot of blurred answer to Question 7"  class="center"  />
+  <img src="/write-ups/jeff0falltrades-sandbox-crackme/q7-answer.png"  alt="Screenshot of blurred answer to Question 7"  class="center"  />
 
 
 <h2 id="question-8">Question 8<a href="#question-8" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -395,7 +392,7 @@
 </blockquote>
 <p>After running the malware, I saw that the file it writes to was not persisted on disk after the binary was finished executing. A look at File operations in ProcMon seemed to confirm this. Luckily, I had learned about the <a href="https://github.com/fbruzzaniti/Capture-Py">capture-py.py</a> script, recommended by jeFF0Falltrades. Using this, I was able to obtain a copy of the file so I could answer this question.</p>
 
-  <img src="q8-answer.png"  alt="Screenshot of blurred answer to Question 8"  class="center"  />
+  <img src="/write-ups/jeff0falltrades-sandbox-crackme/q8-answer.png"  alt="Screenshot of blurred answer to Question 8"  class="center"  />
 
 
 <h1 id="conclusion">Conclusion<a href="#conclusion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
@@ -406,6 +403,24 @@
 
   
   
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h"></span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="//localhost:1313/write-ups/malware-write-ups/latrodectus/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Malware Write-up Latrodectus v1.4</span>
+            </a>
+        </span>
+        
+        
+    </div>
+</div>
+
   
 
   
@@ -429,11 +444,11 @@
   </div>
 </footer>
 
-<script src="https://www.koenmolenaar.nl/assets/main.js"></script>
-<script src="https://www.koenmolenaar.nl/assets/prism.js"></script>
+<script src="//localhost:1313/assets/main.js"></script>
+<script src="//localhost:1313/assets/prism.js"></script>
 
 
-  <script src="https://www.koenmolenaar.nl/assets/languageSelector.js"></script>
+  <script src="//localhost:1313/assets/languageSelector.js"></script>
 
 
 

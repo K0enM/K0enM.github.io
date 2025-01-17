@@ -2,28 +2,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Koen Molenaar / Home</title>
-    <link>/tags/</link>
+    <link>https://www.koenmolenaar.nl/tags/</link>
     <description>Recent content in Tags on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© Koen Molenaar 2025</copyright>
-    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.koenmolenaar.nl/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Crackme</title>
-      <link>/tags/crackme/</link>
+      <link>https://www.koenmolenaar.nl/tags/crackme/</link>
       <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>/tags/crackme/</guid>
+      <guid>https://www.koenmolenaar.nl/tags/crackme/</guid>
       <description></description>
       <content></content>
     </item>
     
     <item>
       <title>Write-Up</title>
-      <link>/tags/write-up/</link>
+      <link>https://www.koenmolenaar.nl/tags/write-up/</link>
       <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>/tags/write-up/</guid>
+      <guid>https://www.koenmolenaar.nl/tags/write-up/</guid>
       <description></description>
       <content></content>
     </item>
