@@ -1,30 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Koen Molenaar / Home</title>
-    <link>https://www.koenmolenaar.nl/en/</link>
-    <description>Recent content on Koen Molenaar / Home</description>
+    <title>Ens on Koen Molenaar / Home</title>
+    <link>http://localhost:1313/en/</link>
+    <description>Recent content in Ens on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>nl-nl</language>
-    <copyright>© Koen Molenaar 2024</copyright><atom:link href="https://www.koenmolenaar.nl/en/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About</title>
-      <link>https://www.koenmolenaar.nl/en/homepage/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.koenmolenaar.nl/en/homepage/about/</guid>
-      <description>Hi there! My name is Koen Molenaar, I&amp;rsquo;m a second year bachelor student Business &amp;amp; IT at the University of Twente!</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>https://www.koenmolenaar.nl/en/homepage/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.koenmolenaar.nl/en/homepage/contact/</guid>
-      <description>Feel free to reach out to me via these platforms:
- Github Email  </description>
-    </item>
-    
+    <language>en</language>
+    <copyright>© Koen Molenaar 2024</copyright>
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

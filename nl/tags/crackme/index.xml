@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Crackme on Koen Molenaar / Home</title>
-    <link>https://www.koenmolenaar.nl/nl/tags/crackme/</link>
+    <link>//localhost:1313/nl/tags/crackme/</link>
     <description>Recent content in Crackme on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>nl</language>
     <copyright>© Koen Molenaar 2024</copyright>
-    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.koenmolenaar.nl/nl/tags/crackme/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/nl/tags/crackme/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>jeFF0Falltrades Sandbox Crackme</title>
-      <link>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</link>
+      <link>//localhost:1313/nl/write-ups/jeff0falltrades-sandbox-crackme/</link>
       <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</guid>
+      <guid>//localhost:1313/nl/write-ups/jeff0falltrades-sandbox-crackme/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;A few days ago, I noticed that one of my favorite reverse engineer youtubers, &lt;a href=&#34;https://www.youtube.com/@jeFF0Falltrades&#34;&gt;jeFF0Falltrades&lt;/a&gt; had uploaded a &lt;a href=&#34;https://www.youtube.com/watch?v=ELPWeRXxnSE&amp;amp;list=PLs-lxQfNn-H3n9TghY02njSFYdBvf_Sea&amp;amp;index=4&#34;&gt;2-part series on setting up a DIY Malware Analysis Sandbox.&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I already had a Malware Analysis lab setup (&lt;a href=&#34;https://github.com/mandiant/flare-vm&#34;&gt;FLARE VM&lt;/a&gt;), but I had not used in quite a while. Moreover, one of the most important parts, faking &amp;amp; capturing internet traffic using Fakenet-ng was not really working for me. Therefore, I decided to revamp my lab using his video series. I did deviate a bit (I updated my existing FLARE VM &amp;amp; I used &lt;a href=&#34;https://www.netresec.com/?page=PolarProxy&#34;&gt;PolarProxy&lt;/a&gt; instead of &lt;a href=&#34;https://portswigger.net/burp&#34;&gt;BurpSuite&lt;/a&gt; as my TLS termination proxy), but in the end I had an up-to-date lab again.&lt;/p&gt;</description>
@@ -106,7 +106,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ resolve function by parsing PE exports│ load-code/pe                                                                    │
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┕━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;DIE output:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/die-output.png&#34; alt=&#34;detect it easy output&#34; title=&#34;Detect it Easy output&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/die-output.png&#34; alt=&#34;detect it easy output&#34; title=&#34;Detect it Easy output&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Seeing this, we know this is a 64-bit Go executable, probably compiled using version 1.22.4.&lt;/p&gt;
 &lt;p&gt;Normally, I would also use &lt;a href=&#34;https://www.winitor.com/&#34;&gt;PE-studio&lt;/a&gt; to analyze a PE file. However, when analyzing the crackme.exe inside PE-studio, it became extremely slow and made my VM unusable. Therefore, I used &lt;a href=&#34;https://ntcore.com/explorer-suite/&#34;&gt;CFF explorer&lt;/a&gt; to analyze the import table of the crackme. Doing this, I found several interesting WinAPI function calls:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Interesting imported functions&lt;/strong&gt;&lt;/p&gt;
@@ -130,7 +130,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;I solved this question using &lt;a href=&#34;https://systeminformer.sourceforge.io/&#34;&gt;SystemInformer&lt;/a&gt;. In SystemInformer, you can look at the memory of a running (or suspended) process. In the memory tab, there is the options button which allows you to look at the strings in memory and filter them. Since we know the answers contains &amp;ldquo;flag_&amp;rdquo;, a simple filter for strings containing this shows the answer.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q1-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 1&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q1-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 1&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-2&#34;&gt;Question 2&lt;/h2&gt;
@@ -139,7 +139,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;I solved this using &lt;a href=&#34;https://learn.microsoft.com/en-us/sysinternals/downloads/procmon&#34;&gt;ProcMon&lt;/a&gt;. To weed out background noise, I filtered the events by only including events originating from crackme.exe. To easily find file operations, I also filtered on operations containing &amp;ldquo;File&amp;rdquo;. The answer to this question can then be found inside ProcMon.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q2-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 2&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q2-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 2&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-3&#34;&gt;Question 3&lt;/h2&gt;
@@ -148,7 +148,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;This was a slightly more difficult question. Initially, I was unsure as to how to answer this. After a while, I remembered jeFF0Falltrades installing &lt;a href=&#34;https://github.com/hasherezade/pe-sieve&#34;&gt;PE-sieve&lt;/a&gt;, which can be used to extract &lt;strong&gt;suspicious&lt;/strong&gt; DLLs &amp;amp; EXEs from a running process. Running PE-sieve on a running / suspended process of crackme outputs a suspicous DLL. I analyzed this DLL in PE-studio, which shows use the size.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q3-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 3&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q3-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 3&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-4&#34;&gt;Question 4&lt;/h2&gt;
@@ -157,7 +157,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;This answer I got fairly trivially. I looked at the strings inside the DLL in &lt;a href=&#34;https://www.winitor.com/&#34;&gt;PE-studio&lt;/a&gt;, which shows the answer immediately.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q4-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 4&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q4-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 4&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-5&#34;&gt;Question 5&lt;/h2&gt;
@@ -170,7 +170,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This intercepts TLS traffic coming from port 443, decrypts it, and forwards the decrypted traffic to 10.10.10.3:80 (My Remnux VM IP), where it is caught by INetSim&amp;rsquo;s HTTP Listener and logged. It also writes a PCAP to the local directory containing the decrypted traffic as if it was directed at port 80.&lt;/p&gt;
 &lt;p&gt;You can find the full URL by looking at the INetSim report or looking through the PCAP generated by PolarProxy.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q5-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 5&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q5-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 5&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-6&#34;&gt;Question 6&lt;/h2&gt;
@@ -179,16 +179,16 @@
 &lt;/blockquote&gt;
 &lt;p&gt;No extra steps are needed to answer this question. The answer can be found by looking at the file generated by INetSim which contains the HTTP Post payload, or by looking through the PCAP generated by PolarProxy.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q6-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 6&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q6-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 6&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-7&#34;&gt;Question 7&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is the name of the file crackme.exe writes to disk? (just the name, not the path; case sensitive)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;For this question, I used ProcMon again with the same filters as for &lt;a href=&#34;https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/#question-2&#34;&gt;Question 2&lt;/a&gt;. However, since the question states &amp;ldquo;writes to disk&amp;rdquo; instead of just &amp;ldquo;accesses&amp;rdquo;, I specifically looked for WriteFile operations.&lt;/p&gt;
+&lt;p&gt;For this question, I used ProcMon again with the same filters as for &lt;a href=&#34;//localhost:1313/nl/write-ups/jeff0falltrades-sandbox-crackme/#question-2&#34;&gt;Question 2&lt;/a&gt;. However, since the question states &amp;ldquo;writes to disk&amp;rdquo; instead of just &amp;ldquo;accesses&amp;rdquo;, I specifically looked for WriteFile operations.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q7-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 7&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q7-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 7&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-8&#34;&gt;Question 8&lt;/h2&gt;
@@ -197,7 +197,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;After running the malware, I saw that the file it writes to was not persisted on disk after the binary was finished executing. A look at File operations in ProcMon seemed to confirm this. Luckily, I had learned about the &lt;a href=&#34;https://github.com/fbruzzaniti/Capture-Py&#34;&gt;capture-py.py&lt;/a&gt; script, recommended by jeFF0Falltrades. Using this, I was able to obtain a copy of the file so I could answer this question.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q8-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 8&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q8-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 8&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;

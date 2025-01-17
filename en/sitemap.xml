@@ -2,130 +2,170 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.koenmolenaar.nl/</loc>
+    <loc>//localhost:1313/</loc>
     <lastmod>2025-01-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/"
+                href="//localhost:1313/nl/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.koenmolenaar.nl/"
+                href="//localhost:1313/"
                 />
   </url><url>
-    <loc>https://www.koenmolenaar.nl/tags/crackme/</loc>
+    <loc>//localhost:1313/tags/latrodectus/</loc>
+    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="//localhost:1313/nl/tags/latrodectus/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/tags/latrodectus/"
+                />
+  </url><url>
+    <loc>//localhost:1313/tags/malware-analysis/</loc>
+    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="//localhost:1313/nl/tags/malware-analysis/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/tags/malware-analysis/"
+                />
+  </url><url>
+    <loc>//localhost:1313/write-ups/malware-write-ups-latrodectus/</loc>
+    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="//localhost:1313/nl/write-ups/malware-write-ups-latrodectus/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/write-ups/malware-write-ups-latrodectus/"
+                />
+  </url><url>
+    <loc>//localhost:1313/tags/reverse-engineering/</loc>
+    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="//localhost:1313/nl/tags/reverse-engineering/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/tags/reverse-engineering/"
+                />
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="//localhost:1313/nl/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/tags/"
+                />
+  </url><url>
+    <loc>//localhost:1313/tags/write-up/</loc>
+    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="nl"
+                href="//localhost:1313/nl/tags/write-up/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/tags/write-up/"
+                />
+  </url><url>
+    <loc>//localhost:1313/tags/crackme/</loc>
     <lastmod>2024-11-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/tags/crackme/"
+                href="//localhost:1313/nl/tags/crackme/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.koenmolenaar.nl/tags/crackme/"
+                href="//localhost:1313/tags/crackme/"
                 />
   </url><url>
-    <loc>https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/</loc>
+    <loc>//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/</loc>
     <lastmod>2024-11-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/"
+                href="//localhost:1313/nl/write-ups/jeff0falltrades-sandbox-crackme/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/"
+                href="//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/"
                 />
   </url><url>
-    <loc>https://www.koenmolenaar.nl/tags/</loc>
+    <loc>//localhost:1313/write-ups/</loc>
     <lastmod>2024-11-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/tags/"
+                href="//localhost:1313/nl/write-ups/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.koenmolenaar.nl/tags/"
+                href="//localhost:1313/write-ups/"
                 />
   </url><url>
-    <loc>https://www.koenmolenaar.nl/tags/write-up/</loc>
-    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/about/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/tags/write-up/"
+                href="//localhost:1313/nl/over/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.koenmolenaar.nl/tags/write-up/"
+                href="//localhost:1313/about/"
                 />
   </url><url>
-    <loc>https://www.koenmolenaar.nl/write-ups/</loc>
-    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/write-ups/"
+                href="//localhost:1313/nl/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.koenmolenaar.nl/write-ups/"
+                href="//localhost:1313/categories/"
                 />
   </url><url>
-    <loc>https://www.koenmolenaar.nl/homepage/about/</loc>
+    <loc>//localhost:1313/contact/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/homepage/about/"
+                href="//localhost:1313/nl/contact/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.koenmolenaar.nl/homepage/about/"
-                />
-  </url><url>
-    <loc>https://www.koenmolenaar.nl/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.koenmolenaar.nl/categories/"
-                />
-  </url><url>
-    <loc>https://www.koenmolenaar.nl/homepage/contact/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/homepage/contact/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.koenmolenaar.nl/homepage/contact/"
-                />
-  </url><url>
-    <loc>https://www.koenmolenaar.nl/homepage/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="nl"
-                href="https://www.koenmolenaar.nl/nl/homepage/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.koenmolenaar.nl/homepage/"
+                href="//localhost:1313/contact/"
                 />
   </url>
 </urlset>

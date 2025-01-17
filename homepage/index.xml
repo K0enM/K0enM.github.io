@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homepages on Koen Molenaar / Home</title>
-    <link>https://www.koenmolenaar.nl/homepage/</link>
+    <link>http://localhost:1313/homepage/</link>
     <description>Recent content in Homepages on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© Koen Molenaar 2024</copyright><atom:link href="https://www.koenmolenaar.nl/homepage/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© Koen Molenaar 2024</copyright><atom:link href="http://localhost:1313/homepage/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://www.koenmolenaar.nl/homepage/about/</link>
+      <link>http://localhost:1313/homepage/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.koenmolenaar.nl/homepage/about/</guid>
+      <guid>http://localhost:1313/homepage/about/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Hi there!&lt;/strong&gt; I&amp;rsquo;m Koen Molenaar. I&amp;rsquo;m a Cybersecurity Msc student at the University of Twente and on this website I post write-ups &amp;amp; blogs about cybersecurity.&lt;/p&gt;</description>
       <content>&lt;p&gt;&lt;strong&gt;Hi there!&lt;/strong&gt; I&amp;rsquo;m Koen Molenaar. I&amp;rsquo;m a Cybersecurity Msc student at the University of Twente and on this website I post write-ups &amp;amp; blogs about cybersecurity.&lt;/p&gt;
 </content>
@@ -20,10 +20,10 @@
     
     <item>
       <title>Contact</title>
-      <link>https://www.koenmolenaar.nl/homepage/contact/</link>
+      <link>http://localhost:1313/homepage/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.koenmolenaar.nl/homepage/contact/</guid>
+      <guid>http://localhost:1313/homepage/contact/</guid>
       <description>&lt;p&gt;Find me on these platforms:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/K0enM&#34;&gt;Github&lt;/a&gt;&lt;/li&gt;

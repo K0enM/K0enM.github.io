@@ -1,19 +1,77 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Write-Ups on Koen Molenaar / Home</title>
-    <link>https://www.koenmolenaar.nl/nl/write-ups/</link>
-    <description>Recent content in Write-Ups on Koen Molenaar / Home</description>
+    <title>Write-ups on Koen Molenaar / Home</title>
+    <link>//localhost:1313/nl/write-ups/</link>
+    <description>Recent content in Write-ups on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>nl</language>
     <copyright>© Koen Molenaar 2024</copyright>
-    <lastBuildDate>Wed, 15 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://www.koenmolenaar.nl/nl/write-ups/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/nl/write-ups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Malware Write-up Latrodectus v1.4</title>
+      <link>//localhost:1313/nl/write-ups/malware-write-ups-latrodectus/</link>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>//localhost:1313/nl/write-ups/malware-write-ups-latrodectus/</guid>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;
+&lt;p&gt;Welcome to the first entry in a series of write-ups where I’ll be reverse engineering and analyzing different pieces of malware. I am a Computer Science student learning reverse engineering and malware analysis in my free time. To practice both my analysis and technical write-up skills, I am starting this series. Each post will dive into the details of a specific piece of malware, exploring how it operates. Today, we’re starting with Latrodectus, which is a Remote Access Trojan (RAT). Latrodectus is not the first malware sample I have analyzed, but it is the most advanced so far, which is why I wanted to start the series with this sample.&lt;/p&gt;</description>
+      <content>&lt;h1 id=&#34;overview&#34;&gt;Overview&lt;/h1&gt;
+&lt;p&gt;Welcome to the first entry in a series of write-ups where I’ll be reverse engineering and analyzing different pieces of malware. I am a Computer Science student learning reverse engineering and malware analysis in my free time. To practice both my analysis and technical write-up skills, I am starting this series. Each post will dive into the details of a specific piece of malware, exploring how it operates. Today, we’re starting with Latrodectus, which is a Remote Access Trojan (RAT). Latrodectus is not the first malware sample I have analyzed, but it is the most advanced so far, which is why I wanted to start the series with this sample.&lt;/p&gt;
+&lt;p&gt;Latrodectus, first seen in October 2023, is a relatively advanced piece of malware (for me). Version 1.4, which I am analyzing, has AES-encrypted strings and dynamically resolves the Windows APIs it uses. Moreover, Latrodectus can perform several different actions, such as downloading &amp;amp; executing files, executing shellcode, listing files and dropping other malicious files.&lt;/p&gt;
+&lt;p&gt;In this post, I will first analyze the &amp;lsquo;general&amp;rsquo; file information retrievable without any reverse engineering. Then, I will go into how Latrodectus resolves the APIs it needs to function. After this, I will explain how it (rather poorly) tries to evade sandboxes and/or debugging by malware analysts. Next, I will tackle the string encryption and, more importantly, how I managed to decrypt all strings and make them visible in Ghidra (with some help from &lt;a href=&#34;https://research.openanalysis.net/latrodectus/config/emulation/2024/09/30/latrodectus.html&#34;&gt;OALabs&lt;/a&gt;). Then, I&amp;rsquo;ll dive into how Latrodectus achieves persistence and how their C2 process works. Lastly, I&amp;rsquo;ll list and analyze the different capabilities this version of Latrodectus offers and provide a YARA rule for detection purposes.&lt;/p&gt;
+&lt;p&gt;For anyone interested in taking a look at this Latrodectus sample themselves, I retrieved it from &lt;a href=&#34;https://www.unpac.me/results/148ce170-808d-4b22-bdaf-6470c472d782&#34;&gt;Unpacme&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;general-file-information&#34;&gt;General file information&lt;/h1&gt;
+&lt;h2 id=&#34;hashes&#34;&gt;Hashes&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;==================================================
+Filename          : latrodectus.bin
+Filesize          : 70144 bytes
+MD5               : 58e3fdda803852666f535b132e6a8160
+SHA1              : 34550c1402b823b5cf3bc7edfeec0cc00cb6a953
+CRC32             : 550e7372
+SHA-256           : 5cecb26a3f33c24b92a0c8f6f5175da0664b21d7c4216a41694e4a4cad233ca8
+SHA-512           : 90ee1949a0cb79ee9ea20351f15fe2d27c8c171e398f01e42849e2cba6a9531cf792757f7fec6aeaea5b3a5e7198e3f875ab702275541acbcd420d46c1a9ba2a
+SHA-384           : 47e8f507d01b7c50285fcb3f5c58308df05d37a764016a4717d6762fee59763b80a904d50bd4ff74e186258c42874002
+Imphash (MD5)     : db7aeb75528663639689f852fd366243
+==================================================
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;My first step is always to obtain the different hashes for a given sample. I use different tools, like PEStudio and Hasher to do this. In the case, the Imphash is particularly interesting. After I finished with the bulk of the reverse engineering work, I did a Pivot search on Unpacme and pivoting on this Imphash unearthed links to a large number of other Latrodectus samples of this version. I confirmed these were Latrodectus samples by using my own YARA rule and the fact that the URLs these samples contact all follow the same pattern.&lt;/p&gt;
+&lt;h2 id=&#34;detect-it-easy-die&#34;&gt;Detect it Easy (DiE)&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PE64
+    Operation system: Windows(Vista)[AMD64, 64-bit, GUI]
+    Linker: Microsoft Linker(14.00.24247)
+    Compiler: Microsoft Visual C/C++(19.00.24247)[C]
+    Language: C
+    Tool: Visual Studio(2015)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Next, I always throw a malware sample into DiE to see some basic information about the binary. In this case, it revealed it was probably a simple C binary, so luckily no weird Rust/Go stuff (Which I am still interested to learn about though).&lt;/p&gt;
+&lt;h2 id=&#34;imports&#34;&gt;Imports&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;DLL&lt;/th&gt;
+          &lt;th&gt;Functions&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;KERNEL32.DLL&lt;/td&gt;
+          &lt;td&gt;CreateMutexW, PeekNamedPipe, GetLastError&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;USER32.DLL&lt;/td&gt;
+          &lt;td&gt;MessageBeep, MessageBoxA&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I then used DiE to take a look at the functions this binary natively imports. I was quite surprised to see only 5 functions, but this immediately alerted me that I needed to look for dynamic API resolving when reverse engineering. This is because there is no way to build a RAT, or any piece of malware with these imports.&lt;/p&gt;
+</content>
+    </item>
+    
     <item>
       <title>jeFF0Falltrades Sandbox Crackme</title>
-      <link>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</link>
+      <link>//localhost:1313/nl/write-ups/jeff0falltrades-sandbox-crackme/</link>
       <pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate>
       
-      <guid>https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/</guid>
+      <guid>//localhost:1313/nl/write-ups/jeff0falltrades-sandbox-crackme/</guid>
       <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;A few days ago, I noticed that one of my favorite reverse engineer youtubers, &lt;a href=&#34;https://www.youtube.com/@jeFF0Falltrades&#34;&gt;jeFF0Falltrades&lt;/a&gt; had uploaded a &lt;a href=&#34;https://www.youtube.com/watch?v=ELPWeRXxnSE&amp;amp;list=PLs-lxQfNn-H3n9TghY02njSFYdBvf_Sea&amp;amp;index=4&#34;&gt;2-part series on setting up a DIY Malware Analysis Sandbox.&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I already had a Malware Analysis lab setup (&lt;a href=&#34;https://github.com/mandiant/flare-vm&#34;&gt;FLARE VM&lt;/a&gt;), but I had not used in quite a while. Moreover, one of the most important parts, faking &amp;amp; capturing internet traffic using Fakenet-ng was not really working for me. Therefore, I decided to revamp my lab using his video series. I did deviate a bit (I updated my existing FLARE VM &amp;amp; I used &lt;a href=&#34;https://www.netresec.com/?page=PolarProxy&#34;&gt;PolarProxy&lt;/a&gt; instead of &lt;a href=&#34;https://portswigger.net/burp&#34;&gt;BurpSuite&lt;/a&gt; as my TLS termination proxy), but in the end I had an up-to-date lab again.&lt;/p&gt;</description>
@@ -106,7 +164,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;│ resolve function by parsing PE exports│ load-code/pe                                                                    │
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;┕━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┷━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;DIE output:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/die-output.png&#34; alt=&#34;detect it easy output&#34; title=&#34;Detect it Easy output&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/die-output.png&#34; alt=&#34;detect it easy output&#34; title=&#34;Detect it Easy output&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Seeing this, we know this is a 64-bit Go executable, probably compiled using version 1.22.4.&lt;/p&gt;
 &lt;p&gt;Normally, I would also use &lt;a href=&#34;https://www.winitor.com/&#34;&gt;PE-studio&lt;/a&gt; to analyze a PE file. However, when analyzing the crackme.exe inside PE-studio, it became extremely slow and made my VM unusable. Therefore, I used &lt;a href=&#34;https://ntcore.com/explorer-suite/&#34;&gt;CFF explorer&lt;/a&gt; to analyze the import table of the crackme. Doing this, I found several interesting WinAPI function calls:&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Interesting imported functions&lt;/strong&gt;&lt;/p&gt;
@@ -130,7 +188,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;I solved this question using &lt;a href=&#34;https://systeminformer.sourceforge.io/&#34;&gt;SystemInformer&lt;/a&gt;. In SystemInformer, you can look at the memory of a running (or suspended) process. In the memory tab, there is the options button which allows you to look at the strings in memory and filter them. Since we know the answers contains &amp;ldquo;flag_&amp;rdquo;, a simple filter for strings containing this shows the answer.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q1-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 1&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q1-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 1&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-2&#34;&gt;Question 2&lt;/h2&gt;
@@ -139,7 +197,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;I solved this using &lt;a href=&#34;https://learn.microsoft.com/en-us/sysinternals/downloads/procmon&#34;&gt;ProcMon&lt;/a&gt;. To weed out background noise, I filtered the events by only including events originating from crackme.exe. To easily find file operations, I also filtered on operations containing &amp;ldquo;File&amp;rdquo;. The answer to this question can then be found inside ProcMon.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q2-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 2&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q2-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 2&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-3&#34;&gt;Question 3&lt;/h2&gt;
@@ -148,7 +206,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;This was a slightly more difficult question. Initially, I was unsure as to how to answer this. After a while, I remembered jeFF0Falltrades installing &lt;a href=&#34;https://github.com/hasherezade/pe-sieve&#34;&gt;PE-sieve&lt;/a&gt;, which can be used to extract &lt;strong&gt;suspicious&lt;/strong&gt; DLLs &amp;amp; EXEs from a running process. Running PE-sieve on a running / suspended process of crackme outputs a suspicous DLL. I analyzed this DLL in PE-studio, which shows use the size.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q3-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 3&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q3-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 3&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-4&#34;&gt;Question 4&lt;/h2&gt;
@@ -157,7 +215,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;This answer I got fairly trivially. I looked at the strings inside the DLL in &lt;a href=&#34;https://www.winitor.com/&#34;&gt;PE-studio&lt;/a&gt;, which shows the answer immediately.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q4-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 4&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q4-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 4&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-5&#34;&gt;Question 5&lt;/h2&gt;
@@ -170,7 +228,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This intercepts TLS traffic coming from port 443, decrypts it, and forwards the decrypted traffic to 10.10.10.3:80 (My Remnux VM IP), where it is caught by INetSim&amp;rsquo;s HTTP Listener and logged. It also writes a PCAP to the local directory containing the decrypted traffic as if it was directed at port 80.&lt;/p&gt;
 &lt;p&gt;You can find the full URL by looking at the INetSim report or looking through the PCAP generated by PolarProxy.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q5-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 5&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q5-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 5&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-6&#34;&gt;Question 6&lt;/h2&gt;
@@ -179,16 +237,16 @@
 &lt;/blockquote&gt;
 &lt;p&gt;No extra steps are needed to answer this question. The answer can be found by looking at the file generated by INetSim which contains the HTTP Post payload, or by looking through the PCAP generated by PolarProxy.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q6-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 6&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q6-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 6&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-7&#34;&gt;Question 7&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is the name of the file crackme.exe writes to disk? (just the name, not the path; case sensitive)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;For this question, I used ProcMon again with the same filters as for &lt;a href=&#34;https://www.koenmolenaar.nl/nl/write-ups/jeff0falltrades-sandbox-crackme/#question-2&#34;&gt;Question 2&lt;/a&gt;. However, since the question states &amp;ldquo;writes to disk&amp;rdquo; instead of just &amp;ldquo;accesses&amp;rdquo;, I specifically looked for WriteFile operations.&lt;/p&gt;
+&lt;p&gt;For this question, I used ProcMon again with the same filters as for &lt;a href=&#34;//localhost:1313/nl/write-ups/jeff0falltrades-sandbox-crackme/#question-2&#34;&gt;Question 2&lt;/a&gt;. However, since the question states &amp;ldquo;writes to disk&amp;rdquo; instead of just &amp;ldquo;accesses&amp;rdquo;, I specifically looked for WriteFile operations.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q7-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 7&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q7-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 7&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h2 id=&#34;question-8&#34;&gt;Question 8&lt;/h2&gt;
@@ -197,7 +255,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;After running the malware, I saw that the file it writes to was not persisted on disk after the binary was finished executing. A look at File operations in ProcMon seemed to confirm this. Luckily, I had learned about the &lt;a href=&#34;https://github.com/fbruzzaniti/Capture-Py&#34;&gt;capture-py.py&lt;/a&gt; script, recommended by jeFF0Falltrades. Using this, I was able to obtain a copy of the file so I could answer this question.&lt;/p&gt;
 
-  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q8-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 8&#34;  class=&#34;center&#34;  /&gt;
+  &lt;img src=&#34;//localhost:1313/write-ups/jeff0falltrades-sandbox-crackme/q8-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 8&#34;  class=&#34;center&#34;  /&gt;
 
 
 &lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;

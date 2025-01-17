@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homepages on Koen Molenaar / Home</title>
-    <link>https://www.koenmolenaar.nl/nl/homepage/</link>
+    <link>http://localhost:1313/nl/homepage/</link>
     <description>Recent content in Homepages on Koen Molenaar / Home</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>nl</language>
-    <copyright>© Koen Molenaar 2024</copyright><atom:link href="https://www.koenmolenaar.nl/nl/homepage/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© Koen Molenaar 2024</copyright><atom:link href="http://localhost:1313/nl/homepage/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Contact</title>
-      <link>https://www.koenmolenaar.nl/nl/homepage/contact/</link>
+      <link>http://localhost:1313/nl/homepage/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.koenmolenaar.nl/nl/homepage/contact/</guid>
+      <guid>http://localhost:1313/nl/homepage/contact/</guid>
       <description>&lt;p&gt;Vind mij op deze platforms:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/K0enM&#34;&gt;Github&lt;/a&gt;&lt;/li&gt;
@@ -30,10 +30,10 @@
     
     <item>
       <title>Over</title>
-      <link>https://www.koenmolenaar.nl/nl/homepage/about/</link>
+      <link>http://localhost:1313/nl/homepage/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.koenmolenaar.nl/nl/homepage/about/</guid>
+      <guid>http://localhost:1313/nl/homepage/about/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Hoi hoi!&lt;/strong&gt; ik ben Koen Molenaar. Ik studeer Cybersecurity aan de University of Twente en op deze website post ik write-ups &amp;amp; blogs over cybersecurity!&lt;/p&gt;</description>
       <content>&lt;p&gt;&lt;strong&gt;Hoi hoi!&lt;/strong&gt; ik ben Koen Molenaar. Ik studeer Cybersecurity aan de University of Twente en op deze website post ik write-ups &amp;amp; blogs over cybersecurity!&lt;/p&gt;
 </content>
