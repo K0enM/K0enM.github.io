@@ -129,25 +129,37 @@
 &lt;p&gt;What string, starting with the prefix &amp;ldquo;flag_&amp;rdquo;, is found when running crackme.exe?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I solved this question using &lt;a href=&#34;https://systeminformer.sourceforge.io/&#34;&gt;SystemInformer&lt;/a&gt;. In SystemInformer, you can look at the memory of a running (or suspended) process. In the memory tab, there is the options button which allows you to look at the strings in memory and filter them. Since we know the answers contains &amp;ldquo;flag_&amp;rdquo;, a simple filter for strings containing this shows the answer.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q1-answer.png&#34; alt=&#34;Screenshot of blurred answer to Question 1&#34; title=&#34;Screenshot of blurred answer to Question 1&#34;&gt;&lt;/p&gt;
+
+  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q1-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 1&#34;  class=&#34;center&#34;  /&gt;
+
+
 &lt;h2 id=&#34;question-2&#34;&gt;Question 2&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is the full path of the file that crackme.exe attempts to access?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I solved this using &lt;a href=&#34;https://learn.microsoft.com/en-us/sysinternals/downloads/procmon&#34;&gt;ProcMon&lt;/a&gt;. To weed out background noise, I filtered the events by only including events originating from crackme.exe. To easily find file operations, I also filtered on operations containing &amp;ldquo;File&amp;rdquo;. The answer to this question can then be found inside ProcMon.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q2-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 2&#34;&gt;&lt;/p&gt;
+
+  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q2-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 2&#34;  class=&#34;center&#34;  /&gt;
+
+
 &lt;h2 id=&#34;question-3&#34;&gt;Question 3&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;crackme.exe uses a suspicious library&amp;hellip;how big is this DLL in &lt;strong&gt;bytes?&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This was a slightly more difficult question. Initially, I was unsure as to how to answer this. After a while, I remembered jeFF0Falltrades installing &lt;a href=&#34;https://github.com/hasherezade/pe-sieve&#34;&gt;PE-sieve&lt;/a&gt;, which can be used to extract &lt;strong&gt;suspicious&lt;/strong&gt; DLLs &amp;amp; EXEs from a running process. Running PE-sieve on a running / suspended process of crackme outputs a suspicous DLL. I analyzed this DLL in PE-studio, which shows use the size.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q3-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 3&#34;&gt;&lt;/p&gt;
+
+  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q3-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 3&#34;  class=&#34;center&#34;  /&gt;
+
+
 &lt;h2 id=&#34;question-4&#34;&gt;Question 4&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Speaking of that suspicious library, what is the file name opened by this library called?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This answer I got fairly trivially. I looked at the strings inside the DLL in &lt;a href=&#34;https://www.winitor.com/&#34;&gt;PE-studio&lt;/a&gt;, which shows the answer immediately.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q4-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 4&#34;&gt;&lt;/p&gt;
+
+  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q4-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 4&#34;  class=&#34;center&#34;  /&gt;
+
+
 &lt;h2 id=&#34;question-5&#34;&gt;Question 5&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is the full URL crackme.exe attempts to contact?&lt;/p&gt;
@@ -157,25 +169,37 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-plaintext&#34; data-lang=&#34;plaintext&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo polarproxy --terminate --connect 10.10.10.3 -p 443,80,80 --leafcert sign -o . -v
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This intercepts TLS traffic coming from port 443, decrypts it, and forwards the decrypted traffic to 10.10.10.3:80 (My Remnux VM IP), where it is caught by INetSim&amp;rsquo;s HTTP Listener and logged. It also writes a PCAP to the local directory containing the decrypted traffic as if it was directed at port 80.&lt;/p&gt;
 &lt;p&gt;You can find the full URL by looking at the INetSim report or looking through the PCAP generated by PolarProxy.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q5-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 5&#34;&gt;&lt;/p&gt;
+
+  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q5-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 5&#34;  class=&#34;center&#34;  /&gt;
+
+
 &lt;h2 id=&#34;question-6&#34;&gt;Question 6&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is the data sent to this URL? (including spaces and punctuation)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;No extra steps are needed to answer this question. The answer can be found by looking at the file generated by INetSim which contains the HTTP Post payload, or by looking through the PCAP generated by PolarProxy.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q6-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 6&#34;&gt;&lt;/p&gt;
+
+  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q6-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 6&#34;  class=&#34;center&#34;  /&gt;
+
+
 &lt;h2 id=&#34;question-7&#34;&gt;Question 7&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is the name of the file crackme.exe writes to disk? (just the name, not the path; case sensitive)&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;For this question, I used ProcMon again with the same filters as for &lt;a href=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/#question-2&#34;&gt;Question 2&lt;/a&gt;. However, since the question states &amp;ldquo;writes to disk&amp;rdquo; instead of just &amp;ldquo;accesses&amp;rdquo;, I specifically looked for WriteFile operations.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q7-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 7&#34;&gt;&lt;/p&gt;
+
+  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q7-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 7&#34;  class=&#34;center&#34;  /&gt;
+
+
 &lt;h2 id=&#34;question-8&#34;&gt;Question 8&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What are the contents of this file?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;After running the malware, I saw that the file it writes to was not persisted on disk after the binary was finished executing. A look at File operations in ProcMon seemed to confirm this. Luckily, I had learned about the &lt;a href=&#34;https://github.com/fbruzzaniti/Capture-Py&#34;&gt;capture-py.py&lt;/a&gt; script, recommended by jeFF0Falltrades. Using this, I was able to obtain a copy of the file so I could answer this question.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q8-answer.png&#34; alt=&#34;&#34; title=&#34;Screenshot of blurred answer to Question 8&#34;&gt;&lt;/p&gt;
+
+  &lt;img src=&#34;https://www.koenmolenaar.nl/write-ups/jeff0falltrades-sandbox-crackme/q8-answer.png&#34;  alt=&#34;Screenshot of blurred answer to Question 8&#34;  class=&#34;center&#34;  /&gt;
+
+
 &lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
 &lt;p&gt;Overall, this challenge was really nice. It was not too easy, but also doable with limited experience using dynamic analysis tools. Moreover, it was very clear that this challenge was designed to be solved with the tools recommended in the tutorial. This made solving this crackme a good shakedown for my lab, which I intend to use in the future for more practice in malware analysis &amp;amp; reverse engineering.&lt;/p&gt;
 &lt;p&gt;Lastly, a big thanks to &lt;a href=&#34;https://www.youtube.com/@jeFF0Falltrades&#34;&gt;je0FFalltrades&lt;/a&gt; for creating amazing RE content and setting up this challenge!&lt;/p&gt;
